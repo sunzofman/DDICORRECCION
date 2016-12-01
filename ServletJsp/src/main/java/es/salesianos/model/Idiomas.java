@@ -1,4 +1,4 @@
-package model;
+package es.salesianos.model;
 
 public class Idiomas {
 	private String idiomas;

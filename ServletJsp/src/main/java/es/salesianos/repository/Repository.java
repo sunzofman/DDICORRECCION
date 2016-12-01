@@ -1,4 +1,4 @@
-package repository;
+package es.salesianos.repository;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.salesianos.model.Idiomas;
+import es.salesianos.model.Paises;
 import model.*;
 
 public class Repository {

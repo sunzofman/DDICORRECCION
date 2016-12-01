@@ -1,9 +1,12 @@
-package service;
+package es.salesianos.service;
 
 import java.util.List;
 
-import model.*;
-import repository.*;
+import es.salesianos.model.Idiomas;
+import es.salesianos.model.Paises;
+import es.salesianos.repository.Repository;
+import es.salesianos.model.*;
+import es.salesianos.repository.*;
 
 public class Service {
 	private Repository repository = new Repository();

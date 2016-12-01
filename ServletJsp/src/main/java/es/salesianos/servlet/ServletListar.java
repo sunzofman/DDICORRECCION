@@ -1,4 +1,4 @@
-package servlet;
+package es.salesianos.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.salesianos.model.Paises;
+import es.salesianos.service.Service;
 import model.*;
 import service.*;
 

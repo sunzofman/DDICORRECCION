@@ -1,4 +1,4 @@
-package model;
+package es.salesianos.model;
 
 public class Paises {
 	private String pais;
