@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="java.io.*,java.util.*,es.salesianos.model.*,es.salesianos.service.*" %>
+<%@ page import="java.io.*,java.util.*,model.*,service.*" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +11,7 @@
 <title>Datos</title>
 </head>
 <body>
-<form method="post" action="Insertar">
+<form method="post" action="Insert">
 	<table width="40%" align="center">
 		<tr>
 			<td colspan="2" align="center"><h2>Escriba su pais</h2><hr></td>

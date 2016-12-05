@@ -1,4 +1,4 @@
-package es.salesianos.repository;
+package repository;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -11,13 +11,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.salesianos.model.Idiomas;
-import es.salesianos.model.Paises;
 import model.*;
 
 public class Repository {
-static File archivo = Paths.get(".").toAbsolutePath().normalize().toFile();
-static String ruta = archivo.toString() + "/src/main/resources/";
+static File file = Paths.get(".").toAbsolutePath().normalize().toFile();
+static String route = file.toString() + "/src/main/resources/";
 
 static final String JDBC_DRIVER = "org.h2.Driver"; 
 static final String DB_URL = "jdbc:h2:" + ruta + "DBtest";
@@ -25,7 +23,7 @@ static final String DB_URL = "jdbc:h2:" + ruta + "DBtest";
 static final String USER = "sa";
 static final String PASS = "";
 
-	public void BorrarTabla(String idioma){
+	public void DeleteTable(String language){
 		Connection conn = null;
 	    Statement stmt = null;
 	
@@ -36,11 +34,34 @@ static final String PASS = "";
 			
 			stmt = conn.createStatement();
 			
-			String sql = "DELETE FROM Paises WHERE idiomaPaises = '" + idioma + "'";
-			String sql2 = "DELETE FROM Idiomas WHERE idioma = '" + idioma + "'";
+			String sql = "DELETE FROM Paises WHERE idiomaPaises = '" + language + "'";
 	
 	        stmt.executeUpdate(sql);
-	        stmt.executeUpdate(sql2);
+	
+	    } catch (SQLException se) {
+	        se.printStackTrace();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeStm(conn, stmt);
+	        closeCon(conn);
+	    } 
+	} 
+	public void DeleteTableTwo(String language){
+		Connection conn = null;
+	    Statement stmt = null;
+	
+	    try {
+	        Class.forName("org.h2.Driver");
+	
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+			
+			stmt = conn.createStatement();
+			
+			String sql = "DELETE FROM Idiomas WHERE idioma = '" + language + "'";
+	
+	        stmt.executeUpdate(sql);
+
 	
 	    } catch (SQLException se) {
 	        se.printStackTrace();
@@ -70,9 +91,9 @@ static final String PASS = "";
 		} 
 	}
 
-	public  List<Paises> listarPaises(){
+	public  List<Countries> listCountries(){
 		Connection conn = null;
-		List<Paises> listPaises= new ArrayList<Paises>();
+		List<Countries> listCountries= new ArrayList<Countries>();
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		Statement stmt = null;
@@ -91,7 +112,7 @@ static final String PASS = "";
 					userInDatabase.setPais(resultSet.getString(1));
 					userInDatabase.setIdioma(resultSet.getString(2));
 					
-					listPaises.add(userInDatabase);
+					listCountries.add(userInDatabase);
 				}
 	
         } catch (SQLException se) {
@@ -100,15 +121,16 @@ static final String PASS = "";
             e.printStackTrace();
         } finally {
             closeStm(conn, stmt);
-            closeCon(conn);
             closeRs(resultSet);
+            closeCon(conn);
+            
         } 
-	    return listPaises;
+	    return listCountries;
 	}
 	
-	public  List<Idiomas> listarIdiomas(){
+	public  List<Idiomas> listarCountries(){
     	Connection conn = null;
-    	List<Idiomas> listIdiomas = new ArrayList<Idiomas>();
+    	List<Countries> listIdiomas = new ArrayList<Countries>();
 		ResultSet resultSet = null;
 		PreparedStatement prepareStatement = null;
 		Statement stmt = null;
@@ -123,10 +145,10 @@ static final String PASS = "";
 			prepareStatement = conn.prepareStatement("SELECT * FROM Idiomas");
 			resultSet = prepareStatement.executeQuery();
 			while(resultSet.next()){
-				Idiomas userInDatabase = new Idiomas();
-				userInDatabase.setIdiomas(resultSet.getString(1));
+				Countries userInDatabase = new Countries();
+				userInDatabase.setCountries(resultSet.getString(1));
 				
-				listIdiomas.add(userInDatabase);
+				listCountries.add(userInDatabase);
 			}
 
         } catch (SQLException se) {
@@ -135,10 +157,11 @@ static final String PASS = "";
             e.printStackTrace();
         } finally {
             closeStm(conn, stmt);
-            closeCon(conn);
             closeRs(resultSet);
+            closeCon(conn);
+            
         } 
-        return listIdiomas;
+        return listCountries;
    }
 
 	private void closeRs(ResultSet resultSet) {
@@ -153,7 +176,7 @@ static final String PASS = "";
 		}
 	}
     
-   public void insertarTablaPaises(String pais, String Idioma){
+   public void InsertCountryTable(String country, String language){
     	Connection conn = null;
         Statement stmt = null;
 
@@ -164,7 +187,7 @@ static final String PASS = "";
 		  
 		    stmt = conn.createStatement();
 		
-		    String sql = "REPLACE INTO Paises (pais,idiomaPaises) VALUES ('" + pais + "', '" + Idioma + "')";
+		    String sql = "REPLACE INTO Paises (pais,idiomaPaises) VALUES ('" + country + "', '" + language + "')";
                    
             stmt.executeUpdate(sql);
         } catch (SQLException se) {            
@@ -177,7 +200,7 @@ static final String PASS = "";
         } 
     }
    
-   public  void insertarTablaIdiomas(String idioma){
+   public  void InsertLanguageTable(String language){
 	   Connection conn = null;
        Statement stmt = null;
 
@@ -188,7 +211,7 @@ static final String PASS = "";
 		 
 		   stmt = conn.createStatement();
 		
-		   String sql = "REPLACE INTO Idiomas (idioma) VALUES ('" + idioma + "')";
+		   String sql = "REPLACE INTO Idiomas (idioma) VALUES ('" + language + "')";
                   
            stmt.executeUpdate(sql);
        } catch (SQLException se) {            
@@ -201,7 +224,7 @@ static final String PASS = "";
        } 
    }
    
-   public void crearTablaIdiomas(){
+   public void CreateLanguageTable(){
 	   Connection conn = null;
        Statement stmt = null;
 
@@ -226,7 +249,7 @@ static final String PASS = "";
 	}
 
    
-   public void crearTablaPaises(){
+   public void CreateCountryTable(){
 	   Connection conn = null;
 	   Statement stmt = null;
 	

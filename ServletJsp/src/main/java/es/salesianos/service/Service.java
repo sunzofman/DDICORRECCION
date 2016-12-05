@@ -1,45 +1,42 @@
-package es.salesianos.service;
+package service;
 
 import java.util.List;
 
-import es.salesianos.model.Idiomas;
-import es.salesianos.model.Paises;
-import es.salesianos.repository.Repository;
-import es.salesianos.model.*;
-import es.salesianos.repository.*;
+import model.*;
+import repository.*;
 
 public class Service {
 	private Repository repository = new Repository();
 	
-	public void insertarNuevoIdioma(String nIdioma, String pais) {
-		repository.insertarTablaIdiomas(nIdioma);
-		repository.insertarTablaPaises(pais, nIdioma);
+	public void InsertNewLanguage(String nLanguage, String country) {
+		repository.InsertLanguageTable(nLanguage);
+		repository.InsertCountryTable(country, nLanguage);
 	}
 	
-	public void insertarPais(String idioma, String pais) {
-		repository.insertarTablaPaises(pais, idioma);
+	public void insertCountry(String language, String country) {
+		repository.InsertCountryTable(country, language);
 	}
 	
-	public void crearTablas() {
-		repository.crearTablaPaises();
-		repository.crearTablaIdiomas();
+	public void createTables() {
+		repository.CreateCountryTable();
+		repository.CreateLanguageTable();
 	}
 	
-	public void BorrarIdioma(String idioma) {
-		repository.BorrarTabla(idioma);
+	public void DeleteLanguage(String language) {
+		repository.DeleteTable(language);
 	}
 
-	public List<Paises> listarPaises() {
-		return repository.listarPaises();
+	public List<Countries> listCountries() {
+		return repository.listCountries();
 	}
 	
-	public List<Idiomas> listarIdiomas() {
-		return repository.listarIdiomas();
+	public List<Languages> listLanguages() {
+		return repository.listLanguages();
 	}
 
 	public Repository getRepository() {
 		return repository;
-	}
+	}s
 
 	public void setRepository(Repository repository) {
 		this.repository = repository;

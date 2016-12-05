@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
    <servlet>
-    <servlet-name>ServletInsertar</servlet-name>
-    <servlet-class>servlet.ServletInsertar</servlet-class>
+    <servlet-name>ServletInsert</servlet-name>
+    <servlet-class>servlet.ServletInsert</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletInsertar</servlet-name>
-    <url-pattern>/Insertar</url-pattern>
+    <servlet-name>ServletInsert</servlet-name>
+    <url-pattern>/Insert</url-pattern>
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>ServletBorrar</servlet-name>
-    <servlet-class>servlet.ServletBorrar</servlet-class>
+    <servlet-name>ServletDelete</servlet-name>
+    <servlet-class>servlet.ServletDelete</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletBorrar</servlet-name>
-    <url-pattern>/Borrar</url-pattern>
+    <servlet-name>ServletDelete</servlet-name>
+    <url-pattern>/Delete</url-pattern>
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>ServletListar</servlet-name>
-    <servlet-class>servlet.ServletListar</servlet-class>
+    <servlet-name>ServletList</servlet-name>
+    <servlet-class>servlet.ServletList</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletListar</servlet-name>
-    <url-pattern>/Listar</url-pattern>
+    <servlet-name>ServletList</servlet-name>
+    <url-pattern>/List</url-pattern>
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>ServletConfirmacion</servlet-name>
-    <servlet-class>servlet.ServletConfirmacion</servlet-class>
+    <servlet-name>ServletConfirm</servlet-name>
+    <servlet-class>servlet.ServletConfirm</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletConfirmacion</servlet-name>
-    <url-pattern>/Confirmacion</url-pattern>
+    <servlet-name>ServletConfirm</servlet-name>
+    <url-pattern>/Confirm</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>
